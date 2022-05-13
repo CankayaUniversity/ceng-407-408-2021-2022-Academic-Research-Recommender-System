@@ -1,0 +1,145 @@
+﻿@page
+@model CENG408.Pages.profileModel
+@{
+    ViewData["Title"] = "Profile Page";
+}
+
+<head>
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="~/css/profile.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <style>
+    .container {
+        max-width: unset;
+        margin: auto;
+        padding: 0;
+        padding-top: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+             style="min-height: 600px; background-image: url(https://media.istockphoto.com/photos/brick-wall-texture-background-with-spotlight-picture-id911686630?b=1&k=20&m=911686630&s=612x612&w=0&h=dlFykqg9tbWLEDxPmnXjN5FFU2_VTDuqNsvGUCIsO4s=); background-size: cover; background-position: center; background-repeat: no-repeat;">
+            <!-- Mask -->
+            <span class="mask bg-gradient-default opacity-8"></span>
+            <!-- Header container -->
+            <div class="container-fluid d-flex align-items-center" style="margin: 40px;">
+                <div class="row">
+                    <div class="col-lg-7 col-md-10">
+                        <h1 class="display-2 text-white">Hello!</h1>
+                        <p class="text-white mt-0 mb-5">
+                            This is your profile page. You can see your informations and you can change
+                            your recommendation preferences.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div class="container-fluid mt--7">
+        </div>
+    </div>
+    <div style="padding:5%">
+        <div class="card bg-secondary shadow">
+            <div class="card-header" style="background-color:white;">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <h3 class="mb-0">My Account</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="background-color:white">
+                <form>
+                    <h6 class="heading-small text-muted mb-4" style="font-size: 12px;">User information</h6>
+                    <div class="pl-lg-4">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-username">Password</label>
+                                    <input type="text" id="input-username" class="form-control form-control-alternative"
+                                           placeholder="Username" value="password">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-email">Email Address</label>
+                                    <input type="email" id="input-email" class="form-control form-control-alternative"
+                                           placeholder="jesse@example.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-first-name">User Name</label>
+                                    <input type="text" id="input-first-name" class="form-control form-control-alternative"
+                                           placeholder="First name" value="Lucky">
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6">
+                              <div class="form-group focused">
+                                <label class="form-control-label" for="input-last-name">Last name</label>
+                                <input type="text" id="input-last-name" class="form-control form-control-alternative"
+                                  placeholder="Last name" value="Jesse">
+                              </div>
+                            </div> -->
+                        </div>
+                        <br>
+                        <a href="/"><button class="bn29">Save Changes</button></a>
+                    </div>
+                    <hr class="my-4">
+                    <!-- Address -->
+                    <h6 class="heading-small text-muted mb-4" style="font-size: 12px;">Recommendation Preferences</h6>
+                    <div class="pl-lg-4">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-city">Maximum Number of Papers</label>
+                                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City"
+                                           value="20">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-country">Recommendation Threshold</label>
+                                    <input type="text" id="input-country" class="form-control form-control-alternative"
+                                           placeholder="Country" value="0.8">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <a href="/"><button class="bn29">Save Changes</button></a>
+                    </div>
+                    <hr class="my-4">
+                    <!-- Description -->
+                    <h6 class="heading-small text-muted mb-4" style="font-size: 12px;">Notification Preferences</h6>
+                    <div class="pl-lg-4">
+                        <div class="form-group focused">
+                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                            <label for="vehicle1" style="font-family:sans-serif;;">
+                                Email me about papers that might be interest
+                                me
+                            </label><br>
+                            <a href="/"><button class="bn632-hover bn26">Delete My Account</button></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- <a href="/"><button class="bn632-hover bn26">Delete My Account</button></a> -->
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="row align-items-center justify-content-xl-between">
+            <div class="col-xl-6 m-auto text-center">
+                <div class="copyright">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>

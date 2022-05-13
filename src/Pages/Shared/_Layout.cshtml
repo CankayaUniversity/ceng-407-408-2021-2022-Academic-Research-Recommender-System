@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CENG408</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <header>
+        <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <img class="logo" src="~/img/logo2.png" style="width: 50px; height:50px; left: 10px;  position: absolute; ">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">HYPERCOR<b><u>REC</u></b>T</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/recommendMe">Recommend Me</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/favorites">Favorites</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/profile">Profile</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Login">Sign Up & Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>-->
+        
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                    <img class="logo" src="~/img/logo.jpeg" style="width: 30px; height:30px; left: 10px; top: 10px; position: absolute;">
+                    <a class="w3-bar-item w3-button" style="padding-left: 30px;" asp-area="" asp-page="/Index">HYPERCOR<b><u>REC</u></b>T</a>
+                    <div class="w3-right w3-hide-small">
+                        <a class="w3-bar-item w3-button" asp-area="" asp-page="/Account/Login">Sign Up & Login</a>
+                    </div>
+                    <div class="w3-right w3-hide-small">
+                        <a class="w3-bar-item w3-button" asp-area="" asp-page="/profile">Profile</a>
+                    </div>
+                    <div class="w3-right w3-hide-small">
+                        <a class="w3-bar-item w3-button" asp-area="" asp-page="/favorites">Favorites</a>
+                    </div>
+                    <div class="w3-right w3-hide-small">
+                        <a class="w3-bar-item w3-button" asp-area="" asp-page="/recommendMe">Recommend Me</a>
+                    </div>
+                </div>
+            </div>
+        
+    </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <!---<footer class="border-top footer text-muted">
+            <div class="container">
+                <img class="logo" src="~/img/logo2.png" style="width: 50px; height: 50px; left: 20%; top: 8px; position: absolute;">
+                <p style="color: white; font-size: 5px; padding-top: 8px;">HYPERCORRECT</a></p>
+            </div>
+        </footer>-->
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
