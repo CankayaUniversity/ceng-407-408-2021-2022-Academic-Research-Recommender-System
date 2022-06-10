@@ -1,0 +1,322 @@
+﻿@page
+@model Hypercorrect.Pages.searchingModel
+@{
+}
+<head>
+    <title>Searching Results</title>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .w3-sidebar {
+            z-index: 3;
+            width: 250px;
+            top: 43px;
+            bottom: 0;
+            height: inherit;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        .logo {
+            display: inline-block;
+            vertical-align: top;
+            width: 35px;
+            height: 35px;
+            margin-right: 0px;
+        }
+
+        .bn632-hover {
+            width: 190px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            margin: 10px;
+            height: 50px;
+            text-align: center;
+            border: none;
+            background-size: 300% 100%;
+            border-radius: 50px;
+            -o-transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
+            .bn632-hover:hover {
+                background-position: 100% 0;
+                -o-transition: all .4s ease-in-out;
+                -webkit-transition: all .4s ease-in-out;
+                transition: all .4s ease-in-out;
+            }
+
+            .bn632-hover:focus {
+                outline: none;
+            }
+
+            .bn632-hover.bn24 {
+                background-image: linear-gradient(to right, #6253e1, #852d91, #a3a1ff, #f24645);
+                box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+            }
+
+        body {
+            background-color: #f4f7f6;
+            
+        }
+
+        .card {
+            /* background: #fff; */
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            transition: .5s;
+            border: 0;
+            border-radius: .55rem;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+        }
+
+        .chat-app .people-list {
+            width: 280px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 20px;
+            z-index: 7
+        }
+
+        .chat-app .chat {
+            margin-left: 280px;
+            border-left: 1px solid #eaeaea
+        }
+
+        .chat .chat-header {
+            padding: 15px 20px;
+            border-bottom: 2px solid #f4f7f6
+        }
+
+        .bn48 {
+            background: linear-gradient(90deg, #c7a0cf, #c52d28);
+            background-size: auto;
+            background-clip: border-box;
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 300% 300%;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            max-width: unset;
+            margin: auto;
+            padding: 0;
+
+        }
+
+        .bn33 {
+            border: 5em;
+            cursor: pointer;
+            outline: none;
+            font-size: 16px;
+            -webkit-transform: translate(0);
+            transform: translate(0);
+            background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+            padding: 0.7em 2em;
+            border-radius: 1px;
+            box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.438);
+            -webkit-transition: box-shadow 0.25s;
+            transition: box-shadow 0.25s;
+            color: white;
+        }
+    </style>
+</head>
+
+<body style="background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);">
+    <!--<div class="w3-top">
+        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+            <img class="logo" src="logo.jpeg"
+                 style="width: 30px; height:30px; left: 10px; top: 10px; position: absolute;">
+            <a href="homepage.html" class="w3-bar-item w3-button"
+               style="padding-left: 30px;">HYPERCOR<b><u>REC</u></b>T</a>-->
+    <!-- Float links to the right. Hide them on small screens -->
+    <!--<div class="w3-right w3-hide-small">
+                <a href="papersyoulike.html" class="w3-bar-item w3-button">Recommend Me</a>
+                <a href="favorites.html" class="w3-bar-item w3-button">Favorites</a>
+                <a href="profile.html" class="w3-bar-item w3-button">Profile</a>
+                <a href="homepage.html" class="w3-bar-item w3-button">Log out</a>
+            </div>
+        </div>
+    </div>-->
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card chat-app">
+                    <div id="plist" class="people-list">
+                        <div class="input-group" style="display: grid">
+                            <h2 style="color: white;"><i class="fa fa-filter" style="color: white;"></i> Filters</h2>
+                            <hr>
+
+                            <div class="padding"></div>
+
+                            <!-- BEGIN FILTER BY DATE -->
+                            <form asp-page="./searching" method="get">
+                                <div class="form-actions no-color">
+                                    <h4 style="color: white;">By keyword:</h4>
+                                    <br />
+                                    <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+                                    <br /><br /><br />
+
+                                    <h4 style="color: white;">By date:</h4>
+                                    <label style="color: white;">From</label><br>
+                                    <input type="text" name="startdate" value="@Model.startdate" /><br>
+                                    <label style="color: white;">To</label><br>
+                                    <input type="text" name="enddate" value="@Model.enddate" />
+                                    <br><br>
+                                    <input type="submit" value="Search" class="btn btn-primary" style="background-color:mediumpurple" />
+                                    <!--<input type="submit" value="Apply" class="btn btn-primary" style="background-color:mediumpurple" /> -->
+                                </div>
+                            </form>
+                            <!-- END FILTER BY DATE -->
+                        </div>
+                    </div>
+                    <div class="chat">
+                        <div class="chat-header clearfix">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <h2 style="color: white;"><i class="fa fa-file-o"></i> Result</h2>
+                                    <hr>
+                                    <!-- BEGIN SEARCH INPUT -->
+                                    <!-- <div class="input-group" style="inline-size: fit-content;">
+        <form asp-page="./searching" method="get">
+            <div class="form-actions no-color">
+                <p style="color: white;">
+                    Find:
+                    <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+                    <input type="submit" value="Search" class="btn btn-primary" style="background-color:mediumpurple" />
+                </p>
+            </div>
+        </form>
+    </div> <!-- END SEARCH INPUT -->
+                                    @if (Model.Students != null)
+                                    {
+                                        if (Model.Students.Any())
+                                        {
+                                            <p style="color: white;">Showing all results matching</p> <!-- <div class="padding"></div> --> <!-- <div class="row">                                 -->
+                                            @foreach (var item in Model.Students)
+                                            {
+                                <div class="w3-row w3-padding-16"
+                                     style="background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e)">
+                                    <div class="w3-row">
+                                        <div class="w3-twothird w3-container">
+                                            <a style="color: white; font-size: 23px;" href="/paperDetail?paperId=@(item.Id)&selectedPageNumber=0">@Html.DisplayFor(m => item.Title)</a> <br><br>
+                                            <p style="color: white; font-family: 'Roboto', sans-serif; overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4; /* number of lines to show */-webkit-box-orient: vertical;">
+                                                @Html.DisplayFor(m => item.Abstract)
+                                            </p>
+
+                                            <br><br>
+                                            <p style="color:  #d6bce7; font-family: 'Roboto', sans-serif; font-size:16px">
+                                                @Html.DisplayFor(m => item.TaskTypes)
+                                            </p>
+
+                                        </div>
+                                        <div class="w3-third w3-container">
+                                            <p class="w3-border w3-padding-large w3-padding-16 w3-center">
+                                                <a class="btn btn-primary" style="background-color:cornflowerblue" asp-page="AddRating" asp-route-ratedUserID="@item.Id">Rate Paper</a>
+                                                <br><br>
+                                                <i class="fa fa-calendar" style="font-size:16px; color: white;">
+                                                    @(item.PublishedDate.HasValue ? item.PublishedDate.Value.ToString("dd/MM/yyyy") : "Unknown")
+                                                </i>
+                                                <a class="btn btn-primary btn-sm" href="@item.GithubUrl"> github</a>
+                                                <a class="btn btn-primary btn-sm" href="@item.PdfUrl"> pdf</a>
+                                                <br>
+                                            </p>
+                                        </div>
+                                        @foreach (var it in Model.UserRatingsList)
+                                        {
+
+                                            @if (it.AvgRating != "0" && it.PaperId == item.Id)
+                                            {
+                                                <td>
+                                                    <p><h6 style="color:white; text-align:center">User rating: @it.AvgRating/5.0</h6></p>
+                                                </td>
+                                            }
+
+                                        }
+                                    </div>                                   
+                                </div>}}
+                                        else
+                                        {
+                                            <h3 style="color:white;">No results found!</h3>}
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--<div class="w3-center w3-padding-64">
+            <div class="w3-bar">
+                <a class="w3-button w3-white" href="#">1</a>
+                <a class="w3-button w3-white w3-hover-purple" href="#">2</a>
+                <a class="w3-button w3-white w3-hover-purple" href="#">3</a>
+                <a class="w3-button w3-white w3-hover-purple" href="#">4</a>
+                <a class="w3-button w3-white w3-hover-purple" href="#">5</a>
+                <a class="w3-button w3-white w3-hover-purple" href="#">»</a>
+            </div>
+        </div>-->
+
+
+
+
+        @{ var prevDisabled = !Model.Students.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.Students.HasNextPage ? "disabled" : ""; }
+        <div class="w3-center">
+            <div class="w3-bar" >
+                <a class="w3-button w3-white w3-hover-purple" style="border-style:dashed;" asp-page="./searching"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-pageIndex="@(Model.Students.PageIndex - 1)"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                   class="btn btn-primary @prevDisabled">
+                    Previous
+                </a>
+                <a class="w3-button w3-white w3-hover-purple" style="border-style:dashed;" asp-page="./searching"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-pageIndex="@(Model.Students.PageIndex + 1)"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                   class="btn btn-primary @nextDisabled">
+                    Next
+                </a>
+            </div>
+        </div>
+        <!--<footer id="myFooter">-->
+        <!-- <div class="w3-container w3-theme-l2 w3-padding-32">
+            <h4>HYPERCORRECT</h4>
+        </div> -->
+        <!--<div class="w3-container w3-theme-grey" style="left: 0%; position: absolute; width: 100%;">
+                <img class="logo" src="logo2.png"
+                     style="width: 30px; height:30px; left: 3%; top: 8px; position: absolute;">
+                <p style="color: white; padding-left: 55px;">HYPERCORRECT</a></p>
+            </div>
+        </footer>-->
+    </div>
+
+
+
+</body>

@@ -1,0 +1,272 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            letter-spacing: 2px;
+            min-height: 101vh;
+        }
+
+        a:hover, a:active {
+            text-decoration: none;
+        }
+
+        input[type="text"], select {
+            outline: none;
+        }
+
+        .col-xs-1 {
+            padding: 0;
+        }
+
+        h1 {
+            font-family: 'Arvo', sans-serif;
+            /*color:#E35865;*/
+            color: #f7f7f7;
+        }
+
+        header.container-fluid {
+            margin: 0;
+            /*background-color: #39404A;*/
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            box-shadow: 0 0px 3px 3px rgba(0,0,0,.4);
+            /*height: 100vh;*/
+            min-height: 150px;
+            padding: 0;
+        }
+
+        .container {
+            max-width: unset;
+            margin: auto;
+            padding: 0;
+            padding-top: 20px;
+        }
+
+        input {
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            font-size: 20px;
+            /*color: #bbb;*/
+            color: #f7f7f7;
+            background: none;
+            letter-spacing: 1px;
+            word-spacing: 10px;
+            font-family: 'Arvo', sans-serif;
+            padding: 0;
+            line-height: 25px;
+        }
+
+        .form {
+            padding: 10px 0;
+            padding-right: 15px;
+            /*border: 3px solid #E35865;*/
+            border: 3px solid #f7f7f7;
+            /*benimki border: 3px solid #a1a2eb;*/
+        }
+
+            .form.col-xs-12 {
+                padding-left: 0;
+            }
+
+        li:hover {
+            box-shadow: 0 0 15px 15px rgba(0,0,0,.1);
+        }
+
+        ::-webkit-input-placeholder {
+            /*color: #bbb;*/
+            color: #f7f7f7;
+            opacity: 1;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+            /*color: #bbb;*/
+            color: #f7f7f7;
+            opacity: 1;
+        }
+
+        ::-moz-placeholder { /* Firefox 19+ */
+            /*color: #bbb;*/
+            color: #f7f7f7;
+            opacity: 1;
+        }
+
+        :-ms-input-placeholder {
+            /*color: #bbb;*/
+            color: #f7f7f7;
+            opacity: 1;
+        }
+
+        #mainBody {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .w3-sidebar {
+            z-index: 3;
+            width: 250px;
+            top: 43px;
+            bottom: 0;
+            height: inherit;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        .bn632-hover {
+            width: 190px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            margin: 10px;
+            height: 50px;
+            text-align: center;
+            border: none;
+            background-size: 300% 100%;
+            border-radius: 50px;
+            -o-transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
+            .bn632-hover:hover {
+                background-position: 100% 0;
+                moz-transition: all .4s ease-in-out;
+                -o-transition: all .4s ease-in-out;
+                -webkit-transition: all .4s ease-in-out;
+                transition: all .4s ease-in-out;
+            }
+
+            .bn632-hover:focus {
+                outline: none;
+            }
+
+            .bn632-hover.bn24 {
+                background-image: linear-gradient( to right, #6253e1, #852d91, #a3a1ff, #f24645 );
+                box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+            }
+
+        .search {
+            width: 150%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding-left: 20px;
+            border-radius: 10px 0 0 10px;
+            outline: none;
+            color: #9DBFAF;
+            background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+            box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.438);
+            -webkit-transition: box-shadow 0.25s;
+            transition: box-shadow 0.25s;
+        }
+
+            .searchTerm:focus {
+                color: #ffffff;
+            }
+
+        .searchButton {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #00B4CC;
+            background-image: linear-gradient(45deg, #4568dc, #6a87b3);
+            box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.438);
+            -webkit-transition: box-shadow 0.25s;
+            transition: box-shadow 0.25s;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap {
+            width: 30%;
+            position: absolute;
+            top: 25%;
+            left: 43%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bn48 {
+            background: linear-gradient(90deg, #c7a0cf, #c52d28);
+            background-size: auto;
+            background-clip: border-box;
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 300% 300%;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body style="padding-top: 35px;">
+    <header class="container-fluid">
+        <div class="container text-center" id="searchBox" style="text-align: center;">
+            <a style="font-size:xx-large; font-family: 'Arvo', sans-serif; color: rgb(187, 223, 223);"><img src="~/img/logo2.png" width="10%" style="text-align: center">HYPERCOR<b><u>REC</u></b>T</a>
+            <form method="post">
+                <div class="wrap">
+                    <div class="search">
+                        <input name="SearchString" type="text" class="searchTerm" placeholder="Search...">
+                        <button type="submit" class="searchButton">
+                            <a asp-page="/searching"
+                               style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;text-decoration: none;"><i>Search</i></a>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="container" style="margin-top: 20%;">
+            <hr size="3" />
+            <h3 style="font-family: 'Montserrat', sans-serif; color: white;text-align: center;">Trending Research</h3>
+        </div>
+        <div class="w3-row w3-padding-16" style="padding: 70px;">
+            @for (int i = 0; i < 3; i++)
+            {
+            <div class="w3-twothird w3-container">
+                <a style="color: white; font-size: 23px;" href="/paperDetail?paperId=@((Model !=null&& Model.PaperList!=null) ? Model.PaperList[i].Id : -1)&selectedPageNumber=0">@Html.DisplayFor(model => model.PaperList[i].Title)</a>
+                <p style="color: white; font-family: 'Roboto', sans-serif; overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4; /* number of lines to show */-webkit-box-orient: vertical;">
+                    @Html.DisplayFor(model => model.PaperList[i].Abstract)
+                </p>
+
+                <br /><br />
+            </div>
+                <div class="w3-third w3-container">
+                    <p class="w3-border w3-padding-large w3-padding-16 w3-center">
+                        <a class="btn btn-primary" style="background-color:cornflowerblue" asp-page="AddRating" asp-route-ratedUserID=" @Html.DisplayFor(model => model.PaperList[i].Id)">Rate Paper</a>
+                        <br><br>
+                        <i class="fa fa-calendar" style="font-size:16px; color: white;"> @Html.DisplayFor(model => model.PaperList[i].PublishedDate)</i>
+                        <a class="btn btn-primary btn-sm" href="@Html.DisplayFor(model => model.PaperList[i].GithubUrl)"> github</a>
+                        <a class="btn btn-primary btn-sm" href="@Html.DisplayFor(model => model.PaperList[i].PdfUrl)"> pdf</a>
+
+                    </p>
+                </div>
+            }
+
+        </div>
+    </header>
+
+</body>
+
+</html>

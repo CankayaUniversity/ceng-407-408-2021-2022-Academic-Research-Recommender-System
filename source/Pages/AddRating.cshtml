@@ -1,0 +1,43 @@
+﻿@page
+@model Hypercorrect.Pages.AddRatingModel
+@{
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+        color: white;
+        font-size: 20px;
+    }
+    .checked {
+        color: orange;
+    }
+</style>
+<script>
+    function DoPostBack() {
+        document.formRate.submit();
+    }
+</script>
+<br />
+<h1>Vote The Papers</h1>
+<form method="post" name="formRate">
+    <br /><br />
+    <div class="rate">
+        <input asp-for="Rate" type="radio" id="star5" name="rate" value="5"
+               onchange="DoPostBack();" />
+        <label for="star5" title="text" style="margin-left:5px;">5 stars<span style="margin-left:20px;" class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></label><br />
+        <input asp-for="Rate" type="radio" id="star4" name="rate" value="4"
+               onchange="DoPostBack();" />
+        <label for="star4" title="text" style="margin-left:5px;">4 stars<span style="margin-left:20px;" class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></label><br />
+        <input asp-for="Rate" type="radio" id="star3" name="rate" value="3"
+               onchange="DoPostBack();" />
+        <label for="star3" title="text" style="margin-left:5px;">3 stars<span style="margin-left:20px;" class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></label><br />
+        <input asp-for="Rate" type="radio" id="star2" name="rate" value="2"
+               onchange="DoPostBack();" />
+        <label for="star2" title="text" style="margin-left:5px;">2 stars<span style="margin-left:20px;" class="fa fa-star checked"></span><span class="fa fa-star checked"></span></label><br />
+        <input asp-for="Rate" type="radio" id="star1" name="rate" value="1"
+               onchange="DoPostBack();" />
+        <label for="star1" title="text" style="margin-left:5px;">1 star<span style="margin-left:27px;" class="fa fa-star checked"></span></label><br />
+    </div>
+
+</form>

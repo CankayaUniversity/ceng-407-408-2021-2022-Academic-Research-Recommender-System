@@ -1,0 +1,152 @@
+﻿@page
+@model Hypercorrect.Pages.recommendMeModel
+@{
+}
+
+<head>
+    <title>My Recommendations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Roboto", sans-serif;
+    }
+
+    body {
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    }
+
+    .w3-sidebar {
+        z-index: 3;
+        width: 250px;
+        top: 43px;
+        bottom: 0;
+        height: inherit;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .logo {
+        display: inline-block;
+        vertical-align: top;
+        width: 35px;
+        height: 35px;
+        margin-right: 0px;
+    }
+
+    .bn48 {
+        background: linear-gradient(90deg, #c7a0cf, #c52d28);
+        background-size: auto;
+        background-clip: border-box;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-size: 300% 300%;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .container {
+        max-width: unset;
+        margin: auto;
+        padding: 0;
+        padding-top: 20px;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+</style>
+<body style="background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); margin-top: 20px;">
+
+    <!--<div class="w3-top">
+        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+            <img class="logo" src="logo.jpeg" style="width: 30px; height:30px; left: 10px; top: 10px; position: absolute;">
+            <a href="homepage.html" class="w3-bar-item w3-button" style="padding-left: 30px;">HYPERCOR<b><u>REC</u></b>T</a>-->
+    <!-- Float links to the right. Hide them on small screens -->
+    <!--<div class="w3-right w3-hide-small">
+                <a href="papersyoulike.html" class="w3-bar-item w3-button">Recommend Me</a>
+                <a href="favorites.html" class="w3-bar-item w3-button">Favorites</a>
+                <a href="profile.html" class="w3-bar-item w3-button">Profile</a>
+                <a href="homepage.html" class="w3-bar-item w3-button">Log out</a>
+            </div>j
+        </div>
+    </div>-->
+    <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+    <div class="w3-main">
+        <h2 style="color: white; font-family: Oxygen, sans-serif"><u>My Recommendations</u></h2> <br><br><br>
+        @if (Model.new_paper_list != null && Model.new_paper_list.Count() > 0)
+        {
+            @for (int i = 0; i < Model.new_paper_list.Count; i++)
+            {
+                <div class="w3-row w3-padding-16">
+                    <!-- <h1 style="color: white;">HYPERCOR<b><u>REC</u></b>T</h1> -->
+
+
+                    <div class="w3-twothird w3-container">
+                        <a style="color: white; font-size: 23px;" href="/paperDetail?paperId=@((Model !=null&& Model.new_paper_list!=null) ? Model.new_paper_list[i].Id : -1)&selectedPageNumber=0">@Html.DisplayFor(model => model.new_paper_list[i].Title)</a>
+                        <p style="color: white; font-family: 'Roboto', sans-serif;">
+                            @Model.new_paper_list[i].Abstract
+                            @*<a class="bn48" style="font-size: 16px;" href="paperdetail.html">See more</a>*@
+                        </p>
+                    </div>
+                    <div class="w3-third w3-container">
+                        <p class="w3-border w3-padding-large w3-padding-16 w3-center">
+
+                            @if (Model.new_paper_list[i].PublishedDate != null)
+                            {
+                                <i class="fa fa-calendar" style="font-size:16px;color: white;">
+                                    @Model.new_paper_list[i].PublishedDate.Value.ToString("dd.MM.yyyy")
+                                </i> }
+                            else
+                            {
+                                <i class="fa fa-calendar" style="font-size:16px;color: white;">
+                                    There is No Date in DB
+                                </i>}
+                            <!--<a style="font-size:14px;" href="@Model.new_paper_list[i].GithubUrl"><i class="fa fa-github " style="background-color: #fff !important; font-size: 2em!important; "></i> </a>
+                            <button style="font-size:24px;color:red"><i class="fa fa-file-pdf-o"></i></button>-->
+                            <a class="btn btn-primary btn-sm" href="@Model.new_paper_list[i].GithubUrl"> github</a>
+                            <a class="btn btn-primary btn-sm" href="@Model.new_paper_list[i].PdfUrl"> pdf</a>
+                            <!--<u>Model.db_cosine_similarities[i].Similarity</u>-->
+
+                        </p>
+                    </div>
+                </div>
+                <p style="color:red">Similarity Rate= @Model.new_paper_list[i].Similarity</p>
+
+                <hr size="10" />
+
+            }
+
+        }
+        else
+        {
+            <br />
+            <h2 style="color: white; font-family: Oxygen, sans-serif"><u>There are no Recommendations</u></h2> <br><br><br>
+        }
+
+
+        <!--<footer id="myFooter">-->
+        <!-- <div class="w3-container w3-theme-l2 w3-padding-32">
+            <h4>HYPERCORRECT</h4>
+        </div> -->
+        <!--<div class="w3-container w3-theme-grey" style="left: 0%; position: absolute; width: 100%;">
+                <img class="logo" src="logo2.png" style="width: 30px; height:30px; left: 3%; top: 8px; position: absolute;">
+                <p style="color: white; padding-left: 55px;">HYPERCORRECT</a></p>
+            </div>
+        </footer>-->
+        <!-- END MAIN -->
+
+    </div>
+
+</body>
