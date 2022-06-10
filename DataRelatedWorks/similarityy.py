@@ -8,7 +8,6 @@ import torch
 from sklearn import preprocessing
 #import schedule
 import time
-#import playsound as ps
 from sentence_transformers import SentenceTransformer,util
 model = SentenceTransformer('all-MiniLM-L6-v2')
 import os
@@ -24,7 +23,6 @@ cursor = connection.cursor()
 
 
 def ssimilarity():
-    print("startttttttttttttttttttttttttttttttttttt")
     print("startttttttttttttttttttttttttttttttttttt")
     cnt=1
     postgreSQL_select_Query = "select id from new_papers_ids where done_similarity=false"
@@ -68,57 +66,27 @@ def ssimilarity():
             for idRow in compare_ids:
 
                 print(counterForInitValues,"    ",idRow,"    ",counter)
-
-                #postgreSQL_select_Query = "select abstract from papers7 where id='{}'".format(row[0])
-                #cursor.execute(postgreSQL_select_Query)
-                #new_abstract = cursor.fetchone()
-
                 postgreSQL_select_Query = "select titvec from tit_abs_vec where id='{}'".format(row[0])
                 cursor.execute(postgreSQL_select_Query)
                 new_abstract = cursor.fetchone()
-
-            # postgreSQL_select_Query = "select abstract from papers7 where id='{}'".format(idRow[0])
-            # cursor.execute(postgreSQL_select_Query)
-            # compare_abstract = cursor.fetchone()
 
                 postgreSQL_select_Query = "select titvec from tit_abs_vec where id='{}'".format(idRow[0])
                 cursor.execute(postgreSQL_select_Query)
                 compare_abstract = cursor.fetchone()
 
-                #print("new_abstract" + new_abstract[0])
-            # print("yukardaki [} olan allllllllllllllllllllllllllllllllllllllllllllllllo")
-                # test=new_abstract[0]
-                # print("new abtract vectrouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu: "+test)
-                # print("\n\n\n\n"+"compare abtract vectrouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu: "+ compare_abstract[0])
-
-                
-                
-
-                # print(type(new_abstract[0]))
-                # print(type(compare_abstract[0]))
                 similarity=util.cos_sim(new_abstract[0],compare_abstract[0])
                 print(similarity)
 
                 print(similarity.numpy()[0])
-                
-
-                #print(type(similarity.numpy()[0]))
-
+               
                 new_sim=float(similarity.numpy()[0])
                 print(new_sim)
-                # print(type(new_sim))
-
-                #query = 'insert into tit_abs_vec(id,titvec,absvec) values (%s, ARRAY [' + vector_title +'],ARRAY [' + vector_abstract +'])'
-                #query = 'insert into cosine_similarity(new_paper_id,compare_paper_id,similarity) values (%s,%s,ARRAY [' + similarity +'])'
-
-
+             
                 query = 'insert into cosine_similarity(new_paper_id,compare_paper_id,similarity) values (%s,%s,%s)'
                 record_to_insert=(row[0],idRow[0],new_sim)
                 cursor.execute(query,record_to_insert)
                 counter=counter+1
                 connection.commit()
-
-            
 
         postgres_insert_query = """ UPDATE new_papers_ids SET done_similarity=true WHERE id='{}'""".format(row[0])
         cursor.execute(postgres_insert_query)
@@ -126,11 +94,7 @@ def ssimilarity():
         connection.commit()
 
         counterForInitValues=counterForInitValues+1
-            #print("similarity:", util.cos_sim(query_embedding,passage_embedding))
+        
         cnt=cnt+1
-
-
-
-    #select id from papers_tasks where task='visual-question-answering' and id!='multi-layer-content-interaction-through'
-print("start yo")
+print("start")
 ssimilarity()
