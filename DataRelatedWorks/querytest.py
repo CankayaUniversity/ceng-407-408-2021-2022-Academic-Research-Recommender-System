@@ -19,16 +19,6 @@ connection = psycopg2.connect(user="postgres",
 cursor = connection.cursor()
 
 
-
-
-
-
-
-
-
-#countFlag=1 #for def task
-
-
 # def areas_tasks():
 #     #testrun
 #     postgreSQL_select_Query = "select area_id from area2 where area_id = 'time-series' "
@@ -43,17 +33,6 @@ cursor = connection.cursor()
             
 #             print(row[0])
             
-
-#             #used previously
-#             #link = "https://paperswithcode.com/api/v1/areas/{}/tasks/".format(row[0])
-
-#             #link = "https://paperswithcode.com/api/v1/areas/audio/tasks/"
-
-#             #page&paperlı olan 
-#             link = "https://paperswithcode.com/api/v1/areas/{}/tasks/?page=1&items_per_page=500".format(row[0])
-
-            
-            
 #             response = requests.get(link)
 #             print(response.status_code)
 #             print(area_Ids)
@@ -63,25 +42,7 @@ cursor = connection.cursor()
 #             #print(response.content)
 #             jsonResponse = response.json()
 
-            
-#             #print(jsonResponse.results)
-#             #print(response)
-#             #kontrol et tekrarliyor mu ayni veriyi
-#             #IF NOT EXISTS ( SELECT 1 FROM Users WHERE FirstName = 'John' AND LastName = 'Smith' )
-#             #BEGIN
-#             #    INSERT INTO Users (FirstName, LastName) VALUES ('John', 'Smith')
-#             #END
 
-#             #insert kismi(original)
-#             #postgres_insert_query = """ INSERT INTO mobile (ID, MODEL, PRICE) VALUES (%s,%s,%s)"""
-#             #record_to_insert = (5, 'One Plus 6', 950)
-#             #cursor.execute(postgres_insert_query, record_to_insert)
-#             #benim kullanacagim kisim
-#             #postgres_insert_query = """ INSERT INTO task2 (task_id, task_name, description, area_type) VALUES (%s,%s,%s,%s)"""
-#             #record_to_insert = (jsonResponse['results'][x]['id'], jsonResponse['results'][x]['name'], jsonResponse['results'][x]['description'], area_Ids)
-#             #cursor.execute(postgres_insert_query, record_to_insert)
-
-            
 #             #for x in range(jsonResponse['count']):
         
 #             for x in range(jsonResponse['count']):
@@ -91,7 +52,7 @@ cursor = connection.cursor()
 #                     cursor.execute(postgres_insert_query, record_to_insert)
 
 #                     print(x)
-#                     print(jsonResponse['results'][x]['id']) #oldu bunu uygula
+#                     print(jsonResponse['results'][x]['id']) 
 #                     #print(jsonResponse['results'][x]['name'])
 #                     #print(jsonResponse['results'][x]['description']+"\n")
 
@@ -116,11 +77,6 @@ cursor = connection.cursor()
     #paper/tasks link
     #https://paperswithcode.com/api/v1/papers/007-democratically-finding-the-cause-of/tasks/
 
-    #HERE FOR REFERENCE
-    #links=[]
-    #for i in range (1791,1792): #1771 
-    #links.append("https://paperswithcode.com/api/v1/papers/?page={}&items_per_page=500".format(i))
-
     #identifying papers that dont fullfill the minimum requirements
     #postgreSQL_select_Query = "delete * from papers where (abstract = '' OR pdf_url = '' OR github_url = '' OR title = '') limit 10"
     #cursor.execute(postgreSQL_select_Query)
@@ -129,7 +85,6 @@ cursor = connection.cursor()
     #while eid is not None:
     #   print(eid)
     #   eid = cursor.fetchone()
-
 
 
 # def waitFor429():
@@ -146,17 +101,6 @@ cursor = connection.cursor()
 #     print("5 min remaining")
 #     print("5 min remaining")
 #     time.sleep(300)
-
-
-
-
-#str to array example
-# # input comma separated elements as string 
-# str = "mito,ilo,cuc"
-
-# # conver to the list
-# list = str.split (",")
-# print ("list: ", list)
 
 def add_task_quantity():
     print("start")
@@ -188,9 +132,6 @@ def add_task_quantity():
         cnt=cnt+1
 
 
-
-
-
 def strToArray():
     cnt=1
     postgreSQL_select_Query = "select id,task_types from papers5 where done_tasks_str=false limit 12"
@@ -211,16 +152,11 @@ def strToArray():
         print("\n")
 
         postgres_insert_query = """ UPDATE papers5 SET done_tasks_str=true WHERE id='{}'""".format(row[0])
-        #print(postgres_insert_query)
         cursor.execute(postgres_insert_query)
         connection.commit()
 
         for x in list:
-            
-
-            # INSERT INTO papers_tasks(id,task) 
-            # VALUES('test_id','test_task');
-            
+           
             postgres_insert_query = """ INSERT INTO papers_tasks (id, task) VALUES (%s,%s)"""
             record_to_insert = (row[0],x)
             cursor.execute(postgres_insert_query, record_to_insert)
@@ -229,19 +165,6 @@ def strToArray():
             
             
         cnt=cnt+1
-
-
-            # postgres_insert_query = """ INSERT INTO task2 (task_id, task_name, description, area_type) VALUES (%s,%s,%s,%s)"""
-            # record_to_insert = (jsonResponse['results'][x]['id'], jsonResponse['results'][x]['name'], jsonResponse['results'][x]['description'], row)
-            # cursor.execute(postgres_insert_query, record_to_insert)
-
-            # print(x)
-            # print(jsonResponse['results'][x]['id']) 
-            # #print(jsonResponse['results'][x]['name'])
-            # #print(jsonResponse['results'][x]['description']+"\n")
-
-            # connection.commit()
-            # count = cursor.rowcount
 
         print("\n")
         
